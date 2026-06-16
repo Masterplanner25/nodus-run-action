@@ -1,24 +1,22 @@
-// Smoke tests for nodus-run-action — exercises core language features.
-// nodus test runs this file and fails if any throw is reached.
+import "std:test" as test
 
-let x = 1 + 1
-if (x != 2) {
-    throw "arithmetic: expected 2, got \(x)"
-}
-
-let items = [1, 2, 3]
-if (len(items) != 3) {
-    throw "len(): expected 3, got \(len(items))"
-}
-
-let name = "Nodus"
-if ("\(name) CI" != "Nodus CI") {
-    throw "string interpolation broken"
-}
-
-let m = {"key": 42i}
-if (m["key"] != 42i) {
-    throw "map access broken"
-}
-
-print("all checks passed")
+test.suite("core language", fn() {
+    test.case("arithmetic", fn() {
+        test.assert_eq(1 + 1, 2)
+    })
+    test.case("string interpolation", fn() {
+        let name = "Nodus"
+        test.assert_eq("\(name) CI", "Nodus CI")
+    })
+    test.case("list len", fn() {
+        let xs = [1, 2, 3]
+        test.assert_eq(len(xs), 3i)
+    })
+    test.case("map access", fn() {
+        let m = {"key": 42i}
+        test.assert_eq(m["key"], 42i)
+    })
+    test.case("boolean logic", fn() {
+        test.assert(true && !false)
+    })
+})
