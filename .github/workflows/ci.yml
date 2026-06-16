@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-run-file:
+    name: nodus run (latest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          file: tests/hello.nd
+
+  test-run-pinned:
+    name: nodus run (pinned version)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          file: tests/hello.nd
+          version: '4.0.5'
+
+  test-nodus-test:
+    name: nodus test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          test-path: tests/test_basic.nd
+
+  test-fmt-check:
+    name: nodus fmt --check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          fmt-check: 'true'
+
+  test-combined:
+    name: run + fmt-check together
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          file: tests/hello.nd
+          fmt-check: 'true'
+
+  test-matrix:
+    name: nodus-lang ${{ matrix.version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ['4.0.4', '4.0.5']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          file: tests/hello.nd
+          version: ${{ matrix.version }}
