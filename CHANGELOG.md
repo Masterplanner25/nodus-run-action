@@ -9,6 +9,22 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.0.1] — 2026-08-19
+
+### Docs
+
+- Pin the README's `version:` examples to nodus-lang **5.0.4**. They documented
+  4.0.5 — five releases back — and that pin is what new users copy, so it was
+  handing them an old runtime.
+
+No behaviour change; `action.yml` still defaults to `latest`.
+
+Surfaced by nodus-lang's Gate 3c (`nodus_gate --consumers`). This action is not
+packaged, so nodus-lang's Stage 6 sweep — which detects drift by hashing
+published sdists and wheels — has nothing to hash and could never have seen it.
+
+---
+
 ## [1.0.0] — 2026-06-15
 
 Initial release.
