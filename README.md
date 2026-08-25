@@ -59,7 +59,7 @@ jobs:
         with:
           test-path: tests/
           fmt-check: 'true'
-          version: '5.2.0'
+          version: '5.3.0'
 ```
 
 ## Inputs
@@ -82,7 +82,7 @@ Pin to a specific action release for reproducible builds:
 - uses: Masterplanner25/nodus-run-action@v1.0.0
   with:
     file: main.nd
-    version: '5.2.0'   # also pin the nodus-lang version
+    version: '5.3.0'   # also pin the nodus-lang version
 ```
 
 ## Pass arguments to nodus run
