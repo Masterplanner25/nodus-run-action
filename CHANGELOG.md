@@ -9,6 +9,23 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.0.8] — 2026-08-29
+
+- Pin the README's `version:` examples to nodus-lang **5.7.1**. They documented
+  5.6.0, so they had gone stale across two nodus-lang releases — the 5.7.0 cycle
+  stopped before this step because that release was found defective after its
+  PyPI upload and was superseded without a GitHub release.
+
+  The pin is what new users copy, so a stale one hands them an old runtime. It is
+  invisible to the Stage 6 content-hash sweep, which works by hashing published
+  sdists and this is a GitHub Action; `nodus_gate --consumers` is what catches
+  it, and did.
+
+  `action.yml`'s `version` default is deliberately empty (meaning latest) and is
+  not a pin — only the README examples are.
+
+---
+
 ## [1.0.1] — 2026-08-19
 
 ### Docs
