@@ -9,6 +9,15 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.0.9] — 2026-08-30
+
+- Pin the README's `version:` examples to nodus-lang **5.8.0**, flagged by
+  `nodus_gate --consumers` at the 5.8.0 release. The pin is what new users copy,
+  so a stale one hands them an old runtime, and it is invisible to the Stage 6
+  content-hash sweep because this is a GitHub Action rather than a PyPI package.
+
+---
+
 ## [1.0.8] — 2026-08-29
 
 - Pin the README's `version:` examples to nodus-lang **5.7.1**. They documented
